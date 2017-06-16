@@ -1,0 +1,16 @@
+.cartItem {
+    display: block;
+}
+
+.cartItem:last-child {
+    color: red;
+}
+
+.cartItem button {
+    float: right;
+    margin-top: 3px;
+}
+
+.cartTotalPrice {
+    font-weight: bold;
+}

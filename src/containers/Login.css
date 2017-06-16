@@ -1,0 +1,22 @@
+.flex-login button {
+
+}
+
+.flex-login input {
+    font-size: 1em;
+}
+.flex-login fieldset {
+    margin-top:20px;
+    margin-bottom: 10px;
+}
+
+.flex-login legend {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    border: none;
+}
+.flex-login .failed {
+    color: red;
+    font-weight: bold;
+}
