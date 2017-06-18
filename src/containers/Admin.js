@@ -89,7 +89,14 @@ class Admin extends React.Component
     handleSubmit = (e) => {
         const {id, name, price} = this.state;
         if (!(name && price)) return; // TODO: cleanup
-        this.props.appShopAdd({...this.state, id: id || this.getNextId()});
+
+        this.props.appShopAdd({
+            ...this.state,
+            id: id || this.getNextId(),
+            price: Number(price),
+            count: 0
+        });
+
         this.setState(this.getInitialState());
     };
 }

@@ -50,6 +50,7 @@ const shopReducer = (state =
                 ...state
             };
             item = state[itemId];
+            console.log("shopReducer:", item);
             break;
 
         default:
