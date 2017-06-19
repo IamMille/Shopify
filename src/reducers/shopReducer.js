@@ -65,7 +65,6 @@ const shopReducer = (state =
 
         case 'CART_DEC_ITEM':
             if (item.count > 0) item.count -= 1;
-            else item.count = action.payload.count;
             break;
 
         case 'SHOP_ADD_ITEM':
@@ -74,6 +73,10 @@ const shopReducer = (state =
 
         case 'SHOP_REMOVE_ITEM':
             delete state[action.payload.id];
+            break;
+
+        case 'CART_REVERT_ITEM':
+            item.count = action.payload.count;
             break;
 
         default:

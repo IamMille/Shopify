@@ -36,12 +36,7 @@ class App extends React.Component
         </nav>
 
         <div className="flex-container">
-            { app.location === "Shop" &&
-                <div className="flex-container">
-                    <Shop />
-                    <Cart />
-                </div>
-            }
+            { app.location === "Shop" && <Shop /> }
             { app.location === "Cart"    && <Cart /> }
             { app.location === "History" && <History /> }
             { app.location === "Admin"   && <Login /> }

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { appShopAdd, appShopRemove } from '../actions/shopActions';
-import { cartItemInc, cartItemDec } from '../actions/cartActions';
+import { cartItemInc, cartItemDec, cartItemRevert } from '../actions/cartActions';
 
 class History extends React.Component
 {
@@ -38,10 +38,10 @@ class History extends React.Component
                 this.props.appShopAdd(payload); break;
 
             case 'CART_INC_ITEM':
-                this.props.cartItemDec(payload); break;
+                this.props.cartItemRevert(payload); break;
 
             case 'CART_DEC_ITEM':
-                this.props.cartItemInc(payload); break;
+                this.props.cartItemRevert(payload); break;
 
             default:
         }
@@ -69,6 +69,9 @@ const mapDispatchToProps = (dispatch) =>
         },
         cartItemDec: (payload) => {
             dispatch(cartItemDec(payload))
+        },
+        cartItemRevert: (item) => {
+            dispatch(cartItemRevert(item));
         }
     }
 };

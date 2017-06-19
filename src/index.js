@@ -17,9 +17,6 @@ import { appHistoryAdd } from './actions/appActions';
 
 const historyMiddleware = store => next => action =>
 {
-
-    next(action);
-
     const ignore = ['HISTORY_ADD', 'VIEW_CHANGE'];
 
     if (!ignore.some(e => e === action.type))
@@ -30,6 +27,7 @@ const historyMiddleware = store => next => action =>
         }));
     }
 
+    next(action);
 };
 
 const store = createStore(

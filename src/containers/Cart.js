@@ -7,7 +7,7 @@ import { cartItemDec } from '../actions/cartActions';
 export class Cart extends React.Component
 {
     render() {
-        const {cart} = this.props;
+        const {cart} = this.props; console.log("cart props:", this.props);
 
         return <div className="flex-cart">
 

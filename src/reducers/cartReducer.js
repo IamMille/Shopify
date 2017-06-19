@@ -31,8 +31,14 @@ const cartReducer = (state =
 
         case 'CART_DEC_ITEM':
             if (item.count > 0) item.count -= 1;
-            else item.count = action.payload.count;
             if (item.count === 0) delete state[itemId];
+            break;
+
+        case 'CART_REVERT_ITEM':
+            console.log("cart revert:", action.payload);
+            const {count} = action.payload;
+            if (count === 0) delete state[itemId];
+            else state[itemId] = action.payload;
             break;
 
         default:

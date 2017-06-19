@@ -3,25 +3,32 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { cartItemInc, cartItemDec } from '../actions/cartActions';
 
+import Cart from './Cart';
 
 export class Shop extends React.Component
 {
     render() {
-        const {shop} = this.props;
+        const {shop} = this.props; console.log("shop props: ", this.props);
 
-        return <div className="flex-shop">
+        return <div className="flex-container">
 
-            {Object.keys(shop).map(key => {
-                const item = shop[key];
-                return <div key={item.id} className="item">
-                    <img src={item.photo} alt=''/>
-                    <div>{item.name}, {item.price + " kr/st"}</div>
-                    <div>
-                        <button onClick={() => this.props.cartItemInc(item)}>+</button> {item.count || 0} {""}
-                        <button onClick={() => this.props.cartItemDec(item)}>-</button>
+            <div className="flex-shop">
+
+                {Object.keys(shop).map(key => {
+                    const item = shop[key];
+                    return <div key={item.id} className="item">
+                        <img src={item.photo} alt=''/>
+                        <div>{item.name}, {item.price + " kr/st"}</div>
+                        <div>
+                            <button onClick={() => this.props.cartItemInc(item)}>+</button> {item.count || 0} {""}
+                            <button onClick={() => this.props.cartItemDec(item)}>-</button>
+                        </div>
                     </div>
-                </div>
-            })}
+                })}
+
+            </div>
+
+            <Cart />
 
         </div>
     }

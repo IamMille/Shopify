@@ -14,3 +14,10 @@ export function cartItemDec(payload)
         payload
     }
 }
+
+export function cartItemRevert(payload) {
+    return {
+        type: "CART_REVERT_ITEM",
+        payload
+    }
+}
