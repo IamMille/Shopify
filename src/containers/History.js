@@ -1,4 +1,4 @@
-import './History.css';
+import '../styles/History.css';
 import React from 'react';
 
 import { connect } from 'react-redux';
@@ -10,16 +10,19 @@ class History extends React.Component
     render() {
         const {app} = this.props;
 
-        return <div>
-            <p>History actions:</p>
-            <div className="history">
-            {app.history.map( (e,i) =>
+        return <div className="history">
+
+            <p className="historyHeader">
+                {app.history.length > 0 ? "History actions" : "(Empty)" }
+            </p>
+
+            { app.history.map( (e,i) =>
                 <p key={i}>
                     {e.type} : {JSON.stringify(e.payload) + " "}
                     <button onClick={() => this.handleRevert(e)}>Revert</button>
                 </p>
             )}
-            </div>
+
         </div>;
     }
 
@@ -29,10 +32,10 @@ class History extends React.Component
 
         switch(type) {
             case 'SHOP_ADD_ITEM':
-                this.props.appProductRemove(payload); break;
+                this.props.appShopRemove(payload); break;
 
             case 'SHOP_REMOVE_ITEM':
-                this.props.appProductAdd(payload); break;
+                this.props.appShopAdd(payload); break;
 
             case 'CART_INC_ITEM':
                 this.props.cartItemDec(payload); break;
@@ -55,10 +58,10 @@ const mapStateToProps = (state) =>
 const mapDispatchToProps = (dispatch) =>
 {
     return {
-        appProductAdd: (payload) => {
+        appShopAdd: (payload) => {
             dispatch(appShopAdd(payload))
         },
-        appProductRemove: (payload) => {
+        appShopRemove: (payload) => {
             dispatch(appShopRemove(payload))
         },
         cartItemInc: (payload) => {

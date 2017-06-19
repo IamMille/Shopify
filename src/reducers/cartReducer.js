@@ -16,7 +16,6 @@ const cartReducer = (state =
                 ...state
             };
             item = state[itemId];
-            console.log("cartReducer:", item);
             break;
 
         default:

@@ -1,7 +1,8 @@
-import './Cart.css';
+import '../styles/Cart.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import { cartItemDec } from '../actions/cartActions';
+
 
 export class Cart extends React.Component
 {
@@ -21,19 +22,19 @@ export class Cart extends React.Component
                 </div>;
             })}
 
-            { Object.keys(cart).length > 0 ? <hr /> : "" }
+            { Object.keys(cart).length > 0 && <hr /> }
 
-            <p>Summa att betala: {this.getTotalPrice()}</p>
+            <p>Total to pay: {this.getTotalPrice()}</p>
 
         </div>;
     }
 
     getTotalPrice() {
         const {cart} = this.props;
+
         return <span className="cartTotalPrice">
-            {Object
-                .keys(cart)
-                .reduce((acc, cur) => acc + cart[cur].price * cart[cur].count, 0) + " kr"}
+            {Object.keys(cart)
+                .reduce((acc, cur) => acc + cart[cur].price * cart[cur].count, 0) + " SEK"}
         </span>;
     }
 }

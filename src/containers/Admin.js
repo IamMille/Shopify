@@ -1,4 +1,4 @@
-import './Admin.css';
+import '../styles/Admin.css';
 import React from 'react';
 
 import { connect } from 'react-redux';
@@ -13,19 +13,10 @@ class Admin extends React.Component
 
     getInitialState = () => {
         return {
-            id: '',
-            name: '',
-            price: '',
+            id: '', name: '', price: '',
             photo: 'https://unsplash.it/170/170?random&' + ~~(Math.random()*99999)
         };
     };
-
-    getNextId = () => {
-        const {shop} = this.props;
-        let keys = Object.keys(shop);
-        let lastKeyId = keys[keys.length - 1];
-        return Number(lastKeyId) + 1;
-    }
 
     render() {
         const {shop} = this.props;
@@ -33,10 +24,9 @@ class Admin extends React.Component
         return <div>
 
             <fieldset>
-                { this.state.id
-                    ? <legend>Edit product: </legend>
-                    : <legend>Add product: </legend>
-                }
+                <legend>
+                    {this.state.id ? "Edit product" : "Add Product"}
+                </legend>
 
                 <input type="text"
                        placeholder="Name"
@@ -73,6 +63,13 @@ class Admin extends React.Component
 
         </div>;
     }
+
+    getNextId = () => {
+        const {shop} = this.props;
+        let keys = Object.keys(shop);
+        let lastKeyId = keys[keys.length - 1];
+        return Number(lastKeyId) + 1;
+    };
 
     handleEdit = (item) => {
         //TODO: if (this.state.id) - you have unsaved changes, abort

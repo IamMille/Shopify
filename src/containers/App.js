@@ -1,4 +1,4 @@
-import './App.css';
+import '../styles/App.css';
 import logo from '../logo.svg';
 
 import React from 'react';
@@ -18,8 +18,8 @@ class App extends React.Component
     let {app} = this.props;
     let views = ['Shop', 'Cart', 'History', 'Admin'];
 
-    return (
-      <div className="App">
+    return <div className="App">
+
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>My React Shop</h2>
@@ -35,33 +35,19 @@ class App extends React.Component
           })}
         </nav>
 
-        { "Shop" !== app.location ? "" :
-          <div className="flex-container">
-              <Shop />
-              <Cart />
-          </div>
-        }
+        <div className="flex-container">
+            { app.location === "Shop" &&
+                <div className="flex-container">
+                    <Shop />
+                    <Cart />
+                </div>
+            }
+            { app.location === "Cart"    && <Cart /> }
+            { app.location === "History" && <History /> }
+            { app.location === "Admin"   && <Login /> }
+        </div>
 
-        { "Cart" !== app.location ? "" :
-          <div className="flex-container">
-              <Cart />
-          </div>
-        }
-
-        { "History" !== app.location ? "" :
-          <div className="flex-container">
-              <History />
-          </div>
-        }
-
-        { "Admin" !== app.location ? "" :
-          <div className="flex-container">
-              <Login />
-          </div>
-        }
-
-      </div>
-    );
+    </div>;
   }
 }
 

@@ -1,4 +1,4 @@
-import './Login.css';
+import '../styles/Login.css';
 import React from 'react';
 
 import { connect } from 'react-redux';
@@ -6,15 +6,12 @@ import { appUserLogin, appUserLogout } from '../actions/appActions';
 
 import Admin from './Admin';
 
+
 class Login extends React.Component
 {
     constructor() {
         super(...arguments);
-
-        this.state = {
-            usr: '',
-            pwd: '',
-        };
+        this.state = { usr: '',  pwd: '' };
     }
 
     render() {
@@ -22,7 +19,7 @@ class Login extends React.Component
 
         return <div className="flex-login">
 
-            { app.isLoggedIn ? "" :
+            { !app.isLoggedIn &&
                 <fieldset>
                     <legend>Enter your credentials: </legend>
 
@@ -40,13 +37,13 @@ class Login extends React.Component
                 </fieldset>
             }
 
-            { app.isLoggedIn !== false ? "" :
+            { app.isLoggedIn === false &&
                 <div>
                     <p className="failed">Wrong username or password!</p>
                 </div>
             }
 
-            { app.isLoggedIn !== true ? "" :
+            { app.isLoggedIn === true &&
                 <div>
                     <p>
                         Welcome {app.username + "! "}

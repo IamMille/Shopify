@@ -1,3 +1,6 @@
+.cartOnly {
+    width: 300px;
+}
 .cartItem {
     display: block;
 }
